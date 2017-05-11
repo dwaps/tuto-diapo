@@ -4,6 +4,7 @@ body
   font-size: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /*DIAPORAMA*/
@@ -21,5 +22,63 @@ body
      -moz-transition: background-image .25s ease-in-out;
       -ms-transition: background-image .25s ease-in-out;
        -o-transition: background-image .25s ease-in-out;
-          transition: background-image .25s ease-in-out;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+}
+
+.controls
+{
+  background: green;
+  border: 2px solid lightgreen;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 2px 2px 5px #333;
+  cursor: pointer;
+}
+
+.controls::after
+{
+  font-size: 20px;
+  color: white;
+}
+
+.play::after { content: "PLAY"; }
+.stop::after { content: "STOP"; }
+.next::after { content: "NEXT"; }
+.previous::after { content: "PREV"; }
+
+.play,
+.stop
+{
+  position: absolute;
+  bottom: 30px;
+}
+
+.play { margin-left: -50px; }
+.stop { margin-left: 50px; }
+
+.next,
+.previous
+{
+  position: absolute;
+  bottom: 45%;
+  -webkit-transition: bottom .25s ease-in-out;
+     -moz-transition: bottom .25s ease-in-out;
+      -ms-transition: bottom .25s ease-in-out;
+       -o-transition: bottom .25s ease-in-out;
+          transition: bottom .25s ease-in-out;
+}
+
+.next { left: 20px; }
+.previous { right: 20px; }
+
+@media screen and (max-width:450px)
+{
+  .next,
+  .previous
+  {
+    bottom: 75px;
+  }
 }
