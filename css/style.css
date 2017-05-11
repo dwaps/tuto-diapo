@@ -71,8 +71,8 @@ body
           transition: bottom .25s ease-in-out;
 }
 
-.next { left: 20px; }
-.previous { right: 20px; }
+.previous { left: 20px; }
+.next { right: 20px; }
 
 @media screen and (max-width:450px)
 {
