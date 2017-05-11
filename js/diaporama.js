@@ -39,6 +39,42 @@ btStop.addEventListener(
 );
 
 
+btPrevious.addEventListener(
+  'click',
+  function()
+  {
+    if(cpt > 1) cpt--;
+    else cpt = NB_SLIDES;
+    
+    firstStart = false;  
+
+    // On met à jour le diaporama
+    diaporama.style.backgroundImage = "url('../img/slide"+cpt+".jpg')";
+
+    console.log("PREVIOUS => slide ", cpt);
+  },
+  false
+);
+
+btNext.addEventListener(
+  'click',
+  function()
+  {
+    if(firstStart) cpt += 2;
+    else if(cpt < NB_SLIDES) cpt++;
+    else cpt = 1;
+
+    firstStart = false;  
+
+    // On met à jour le diaporama
+    diaporama.style.backgroundImage = "url('../img/slide"+cpt+".jpg')";
+
+    console.log("NEXT => slide ", cpt);
+  },
+  false
+);
+
+
 // FONCTIONS
 
 function startDiaporama()
@@ -51,8 +87,9 @@ function startDiaporama()
         // Si pression sur play au premier démarrage
         // cela signifie que slide1 est déjà affiché
         // => il faut empêcher qu'il ne reste affiché 2 fois plus longtemps que les autres images
-        if(firstStart) cpt += 2;
-        else cpt++;
+        if(firstStart && (cpt == 0 || cpt < NB_SLIDES-1) ) cpt += 2;
+        else if(cpt == 0 || (cpt > 0 && cpt < NB_SLIDES) ) cpt++;
+        else cpt = 1;
 
         // A ce niveau, nous sommes sûr de ne plus être au premier démarrage du diaporama
         firstStart = false;
