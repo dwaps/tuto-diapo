@@ -21,6 +21,7 @@ btPlay.addEventListener(
   'click',
   function()
   {
+    btPlay.style.opacity = "0.5";
     diapoOn = true;
     startDiaporama();
     console.log("Play !");
@@ -32,6 +33,9 @@ btStop.addEventListener(
   'click',
   function()
   {
+    btPlay.style.opacity = "1";
+    btStop.style.opacity = "0.5";
+    setTimeout(function() { btStop.style.opacity = "1"; }, 200);
     diapoOn = false;
     console.log("Stop !");
   },
@@ -43,11 +47,16 @@ btPrevious.addEventListener(
   'click',
   function()
   {
+    btPrevious.style.opacity = "0.5";
+    setTimeout(function() { btPrevious.style.opacity = "1"; }, 200);
+
     if(cpt > 1) cpt--;
     else cpt = NB_SLIDES;
 
+    firstStart = false;
+
     // On met à jour le diaporama
-    diaporama.style.backgroundImage = "url('../img/slide"+cpt+".jpg')";
+    diaporama.style.backgroundImage = "url('../img/slideshow/slide"+cpt+".jpg')";
 
     console.log("PREVIOUS => slide ", cpt);
   },
@@ -58,11 +67,17 @@ btNext.addEventListener(
   'click',
   function()
   {
-    if(cpt < NB_SLIDES) cpt++;
-    else cpt = 1;    
+    btNext.style.opacity = "0.5";
+    setTimeout(function() { btNext.style.opacity = "1"; }, 200);
+
+    if(firstStart) cpt += 2;
+    else if(cpt < NB_SLIDES) cpt++;
+    else cpt = 1;
+
+    firstStart = false;  
 
     // On met à jour le diaporama
-    diaporama.style.backgroundImage = "url('../img/slide"+cpt+".jpg')";
+    diaporama.style.backgroundImage = "url('../img/slideshow/slide"+cpt+".jpg')";
 
     console.log("NEXT => slide ", cpt);
   },
@@ -92,7 +107,7 @@ function startDiaporama()
         console.log("Affichage : slide ", cpt);
       
         // On change l'image du diaporama grâce au compteur de slides
-        diaporama.style.backgroundImage = "url('../img/slide"+cpt+".jpg')";
+        diaporama.style.backgroundImage = "url('../img/slideshow/slide"+cpt+".jpg')";
 
         // On réinitialise le compteur de slides
         // si on a atteint la dernière image

@@ -16,7 +16,7 @@ body
   bottom: 0;
   left: 0;
   right: 0;
-  background: url('../img/slide1.jpg') center no-repeat;
+  background: url('../img/slideshow/slide1.jpg') center no-repeat;
   background-size: cover;
   -webkit-transition: background-image .25s ease-in-out;
      -moz-transition: background-image .25s ease-in-out;
@@ -29,25 +29,18 @@ body
 
 .controls
 {
-  background: green;
-  border: 2px solid lightgreen;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   box-shadow: 2px 2px 5px #333;
   cursor: pointer;
+  opacity: 1;
+  -webkit-transition: opacity .25s ease-in;
+     -moz-transition: opacity .25s ease-in;
+      -ms-transition: opacity .25s ease-in;
+       -o-transition: opacity .25s ease-in;
+          transition: opacity .25s ease-in;
 }
-
-.controls::after
-{
-  font-size: 20px;
-  color: white;
-}
-
-.play::after { content: "PLAY"; }
-.stop::after { content: "STOP"; }
-.next::after { content: "NEXT"; }
-.previous::after { content: "PREV"; }
 
 .play,
 .stop
@@ -56,8 +49,16 @@ body
   bottom: 30px;
 }
 
-.play { margin-left: -50px; }
-.stop { margin-left: 50px; }
+.play {
+  margin-left: -50px;
+  background: #050 url('../img/play.png') center no-repeat;
+  background-size: contain;
+}
+.stop {
+  margin-left: 50px;
+  background: #500 url('../img/stop.png') center no-repeat;
+  background-size: contain;
+}
 
 .next,
 .previous
@@ -71,8 +72,16 @@ body
           transition: bottom .25s ease-in-out;
 }
 
-.previous { left: 20px; }
-.next { right: 20px; }
+.previous {
+  left: 20px;
+  background: #030 url('../img/previous.png') center no-repeat;
+  background-size: contain;
+}
+.next {
+  right: 20px;
+  background: #030 url('../img/next.png') center no-repeat;
+  background-size: contain;
+}
 
 @media screen and (max-width:450px)
 {
